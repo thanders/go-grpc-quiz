@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+option go_package = "github.com/thanders/go-grpc-quiz/questions/questions";
+
+package questions;
+
+service Questions {
+  rpc GetAllQuestions(GameMeta) returns (stream Question) {}
+}
+
+message GameMeta {
+  int32 id = 1;
+  string userName = 2;
+}
+
+message Question {
+  string question = 1;
+  string id = 2;
+  string category = 3;
+  string difficulty = 4;
+}
